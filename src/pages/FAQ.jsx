@@ -1,5 +1,4 @@
 import { useState } from 'react'
-import { Link } from 'react-router-dom'
 
 const faqs = [
   {
@@ -28,40 +27,40 @@ const faqs = [
   },
   {
     q: 'When will Rally be available?',
-    a: "We're in beta right now and rolling out gradually. Sign up for the waitlist and we'll notify you as soon as we launch in your area.",
+    a: "You can pre-order Rally right now on the App Store — just scan the QR code on the home page. We'll notify you the moment it goes live in your area.",
   },
   {
     q: 'Is there a premium tier?',
-    a: "We'll have optional paid features, but the core experience — browsing, liking, matching, and chatting — will always be free. No like caps, no forced upgrades to meet people.",
+    a: "We'll have optional paid features down the road, but the core experience — browsing, liking, matching, and chatting — will always be free. No like caps, no forced upgrades to meet people.",
   },
   {
-    q: 'What platforms will Rally be on?',
-    a: 'iOS and Android. Both are in development and launching soon.',
+    q: 'What platforms is Rally on?',
+    a: 'iPhone only. Rally is exclusively on iOS and is not available on Android.',
   },
 ]
 
 function FAQItem({ q, a }) {
   const [open, setOpen] = useState(false)
   return (
-    <div className="border-b border-gray-100 last:border-0">
+    <div className="border-b border-white/[0.07] last:border-0">
       <button
-        className="w-full flex items-start justify-between gap-4 py-6 text-left"
+        className="w-full flex items-start justify-between gap-6 py-6 text-left"
         onClick={() => setOpen(!open)}
         aria-expanded={open}
       >
-        <span className="font-semibold text-blue-900 text-sm leading-snug">{q}</span>
+        <span className="font-semibold text-white text-sm leading-snug">{q}</span>
         <span
-          className={`shrink-0 w-5 h-5 rounded-full border border-blue-200 flex items-center justify-center mt-0.5 transition-transform ${
+          className={`shrink-0 w-5 h-5 rounded-full border border-white/20 flex items-center justify-center mt-0.5 transition-transform ${
             open ? 'rotate-45' : ''
           }`}
         >
           <svg width="10" height="10" viewBox="0 0 10 10" fill="none">
-            <path d="M5 2V8M2 5H8" stroke="#1e3a8a" strokeWidth="1.5" strokeLinecap="round" />
+            <path d="M5 2V8M2 5H8" stroke="white" strokeWidth="1.5" strokeLinecap="round" />
           </svg>
         </span>
       </button>
       {open && (
-        <p className="text-gray-400 text-sm leading-relaxed pb-6">{a}</p>
+        <p className="text-blue-200/70 text-sm leading-relaxed pb-6 max-w-xl">{a}</p>
       )}
     </div>
   )
@@ -69,56 +68,44 @@ function FAQItem({ q, a }) {
 
 export default function FAQ() {
   return (
-    <main className="pt-24 overflow-hidden">
-      {/* Header */}
-      <section className="py-20 bg-white text-center">
-        <div className="max-w-2xl mx-auto px-6">
-          <p className="text-xs font-semibold text-blue-500 uppercase tracking-widest mb-5">FAQ</p>
-          <h1 className="text-5xl font-extrabold text-blue-900 tracking-tight mb-5">
-            Got questions?
+    <main className="pt-[76px] overflow-hidden">
+
+      {/* ══════════════════════════════════════════
+          HEADER
+      ══════════════════════════════════════════ */}
+      <section className="py-20 md:py-28">
+        <div className="px-5 sm:px-8 md:px-14 lg:px-20 max-w-2xl">
+          <span className="text-[10px] font-semibold text-blue-400 uppercase tracking-widest block mb-8">FAQ</span>
+          <h1
+            className="text-white leading-[0.9] mb-6"
+            style={{ fontSize: 'clamp(40px, 7vw, 90px)', fontWeight: 800, letterSpacing: '-0.04em', fontFamily: "'Plus Jakarta Sans', system-ui, sans-serif" }}
+          >
+            Got<br />
+            <span className="italic text-blue-300">questions?</span>
           </h1>
-          <p className="text-gray-400 text-sm leading-relaxed">
+          <p className="text-blue-200/70 text-sm leading-relaxed">
             Everything you need to know about how Rally works. Can't find what you're looking for?{' '}
-            <a href="mailto:hello@rallydating.app" className="text-blue-700 hover:underline">
+            <a href="mailto:hello@rallydating.app" className="text-blue-300 hover:text-white transition-colors underline underline-offset-2">
               Reach out.
             </a>
           </p>
         </div>
       </section>
 
-      {/* FAQ list */}
-      <section className="py-8 pb-24 bg-white">
-        <div className="max-w-2xl mx-auto px-6">
-          <div className="glass-card rounded-3xl px-8 py-2">
-            {faqs.map((item) => (
-              <FAQItem key={item.q} q={item.q} a={item.a} />
-            ))}
-          </div>
+
+      {/* ══════════════════════════════════════════
+          FAQ LIST
+      ══════════════════════════════════════════ */}
+      <section className="border-t border-white/10 py-12 pb-24">
+        <div className="px-5 sm:px-8 md:px-14 lg:px-20 max-w-3xl">
+          {faqs.map((item) => (
+            <FAQItem key={item.q} q={item.q} a={item.a} />
+          ))}
         </div>
       </section>
 
-      {/* CTA */}
-      <section className="py-20 bg-blue-900">
-        <div className="max-w-xl mx-auto px-6 text-center">
-          <h2 className="text-3xl font-extrabold text-white tracking-tight mb-4">
-            Still curious?
-          </h2>
-          <p className="text-blue-300 text-sm mb-8">
-            Join the waitlist and try it for yourself when we launch.
-          </p>
-          <Link
-            to="/"
-            onClick={() =>
-              setTimeout(() => {
-                document.getElementById('waitlist')?.scrollIntoView({ behavior: 'smooth' })
-              }, 100)
-            }
-            className="inline-block bg-white text-blue-900 font-semibold text-sm px-8 py-3.5 rounded-full hover:bg-blue-50 transition-colors"
-          >
-            Get Early Access
-          </Link>
-        </div>
-      </section>
+
+
     </main>
   )
 }

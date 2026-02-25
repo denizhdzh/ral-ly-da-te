@@ -61,6 +61,15 @@
 .animate-float       { animation: floatY 5s ease-in-out infinite; }
 .animate-marquee     { animation: marquee 40s linear infinite; }
 
+@keyframes swipeLeft {
+  to { transform: translateX(-150%) rotate(-18deg); opacity: 0; }
+}
+@keyframes swipeRight {
+  to { transform: translateX(150%) rotate(18deg); opacity: 0; }
+}
+.animate-swipe-left  { animation: swipeLeft  0.38s cubic-bezier(0.4, 0, 1, 1) both; }
+.animate-swipe-right { animation: swipeRight 0.38s cubic-bezier(0.4, 0, 1, 1) both; }
+
 /* ── Fluid type scale ── */
 .text-display   { font-size: clamp(38px,  6.5vw, 90px); font-family: 'Plus Jakarta Sans', system-ui, sans-serif; font-weight: 800; letter-spacing: -0.04em; }
 .text-display-sm{ font-size: clamp(30px,  5vw,   68px); font-family: 'Plus Jakarta Sans', system-ui, sans-serif; font-weight: 800; letter-spacing: -0.03em; }

@@ -1,5 +1,6 @@
 {
   "hosting": {
+    "site": "rally-dating",
     "public": "dist",
     "ignore": [
       "firebase.json",

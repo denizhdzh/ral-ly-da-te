@@ -2,6 +2,7 @@ import { HashRouter, Routes, Route, useLocation } from 'react-router-dom'
 import { useEffect } from 'react'
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
+import PreorderSection from './components/PreorderSection'
 import Home from './pages/Home'
 import About from './pages/About'
 import FAQ from './pages/FAQ'
@@ -17,6 +18,7 @@ function ScrollToTop() {
 }
 
 function Layout() {
+  const { pathname } = useLocation()
   return (
     <>
       <ScrollToTop />
@@ -28,6 +30,7 @@ function Layout() {
         <Route path="/privacy" element={<Privacy />} />
         <Route path="/terms" element={<Terms />} />
       </Routes>
+      {pathname !== '/' && <PreorderSection />}
       <Footer />
     </>
   )
