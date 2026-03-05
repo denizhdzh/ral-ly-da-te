@@ -35,140 +35,93 @@ export default function Home() {
     <main>
 
       {/* ══════════════════════════════════════════
-          HERO  —  Interactive swipe demo
+          HERO
       ══════════════════════════════════════════ */}
       <section className="h-[100svh] flex flex-col pt-[76px] overflow-hidden">
 
-        {/* Two-col grid */}
-        <div className="flex-1 grid md:grid-cols-[3fr_2fr] content-center items-center gap-6 md:gap-16 px-5 sm:px-8 md:px-14 lg:px-20 py-8 md:py-14">
+        <div className="flex-1 grid md:grid-cols-[1fr_auto] px-5 sm:px-8 md:px-14 lg:px-20 md:gap-16">
 
-          {/* ── Left: Copy ── */}
-          <div>
-            <div
-              className="inline-flex items-center gap-2 glass-dark rounded-full px-3.5 py-1.5 mb-4 md:mb-6 w-fit animate-fade-in"
-              style={{ animationDelay: '0s' }}
-            >
-              <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
-              <span className="text-[11px] font-semibold text-blue-200 tracking-widest uppercase">Now on App Store</span>
-            </div>
+          {/* ── Left: spread badge+headline top, description+CTA+stats bottom ── */}
+          <div className="flex flex-col justify-center md:justify-between py-10 md:py-14">
 
-            <div className="mb-3 md:mb-5">
-              <div className="overflow-hidden">
-                <p
-                  className="text-display text-white leading-[0.86] tracking-[-0.03em] animate-slide-up"
-                  style={{ animationDelay: '0.04s' }}
-                >Dating</p>
+            {/* TOP: badge + big headline */}
+            <div>
+              <div className="inline-flex items-center gap-2 backdrop-blur-xl bg-white/[0.07] border border-white/[0.12] rounded-full px-3.5 py-1.5 mb-5 md:mb-8 w-fit animate-fade-in" style={{ animationDelay: '0s' }}>
+                <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                <span className="text-[11px] font-semibold text-blue-200 tracking-widest uppercase">Now on App Store</span>
               </div>
-              <div className="overflow-hidden">
-                <p
-                  className="text-display italic text-blue-300 leading-[0.86] tracking-[-0.03em] animate-slide-up"
-                  style={{ animationDelay: '0.11s' }}
-                >without</p>
-              </div>
-              <div className="overflow-hidden">
-                <p
-                  className="text-display text-white leading-[0.86] tracking-[-0.03em] animate-slide-up"
-                  style={{ animationDelay: '0.18s' }}
-                >the algo.</p>
-              </div>
-            </div>
-
-            <p
-              className="text-blue-300/70 text-[15px] max-w-sm leading-relaxed mb-5 md:mb-7 animate-fade-in"
-              style={{ animationDelay: '0.32s' }}
-            >
-              100 real people every day. No like limits. No manipulation. Just genuine connections.
-            </p>
-
-            <div
-              className="flex flex-wrap items-center gap-4 animate-fade-in"
-              style={{ animationDelay: '0.42s' }}
-            >
-              <a
-                href="#waitlist"
-                onClick={scrollToWaitlist}
-                className="inline-flex items-center gap-2 bg-white text-blue-900 font-bold text-sm px-7 py-3.5 rounded-full hover:bg-blue-50 transition-colors"
-              >
-                Pre-order on App Store
-                <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
-                  <path d="M2 6H10M7 3L10 6L7 9" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" />
-                </svg>
-              </a>
-              <span className="text-blue-500 text-xs font-medium">iPhone only · Free forever</span>
-            </div>
-          </div>
-
-          {/* ── Right: Interactive swipe demo — desktop only ── */}
-          <div className="hidden md:flex flex-col items-center justify-center gap-5">
-
-            {/* Card stack */}
-            <div className="relative" style={{ width: 240, height: 380 }}>
-
-              {/* Back card */}
-              <div
-                className="absolute rounded-[28px] overflow-hidden"
-                style={{ inset: 0, transform: 'rotate(6deg) translateY(8px)', opacity: 0.28, zIndex: 1 }}
-              >
-                <img src={profiles[(swipe.idx + 2) % profiles.length].img} alt="" className="w-full h-full object-cover" />
-              </div>
-
-              {/* Middle card */}
-              <div
-                className="absolute rounded-[28px] overflow-hidden"
-                style={{ inset: 0, transform: 'rotate(-4deg) translateY(4px)', opacity: 0.55, zIndex: 2 }}
-              >
-                <img src={profiles[(swipe.idx + 1) % profiles.length].img} alt="" className="w-full h-full object-cover" />
-              </div>
-
-              {/* Front card — animates on swipe */}
-              <div
-                key={swipe.idx}
-                className={`absolute rounded-[28px] overflow-hidden ${
-                  swipe.dir === 'left' ? 'animate-swipe-left' :
-                  swipe.dir === 'right' ? 'animate-swipe-right' : ''
-                }`}
-                style={{ inset: 0, zIndex: 3 }}
-              >
-                <img src={profiles[swipe.idx].img} alt="" className="w-full h-full object-cover" />
-                <div
-                  className="absolute bottom-0 left-0 right-0 pt-16 pb-4 px-4"
-                  style={{ background: 'linear-gradient(to top, rgba(5,14,46,0.95) 0%, rgba(5,14,46,0.4) 60%, transparent 100%)' }}
-                >
-                  <p className="text-white font-bold text-[15px] leading-tight">{profiles[swipe.idx].name}, {profiles[swipe.idx].age}</p>
-                  <p className="text-blue-200/60 text-[11px] mt-0.5">{profiles[swipe.idx].dist}</p>
+              <div>
+                <div className="overflow-hidden">
+                  <p className="animate-slide-up text-white leading-[0.88]" style={{ fontSize: 'clamp(52px, 8vw, 112px)', fontWeight: 800, letterSpacing: '-0.04em', fontFamily: "'Plus Jakarta Sans', system-ui, sans-serif", animationDelay: '0.04s' }}>Dating</p>
+                </div>
+                <div className="overflow-hidden">
+                  <p className="animate-slide-up italic text-blue-500 leading-[0.88]" style={{ fontSize: 'clamp(52px, 8vw, 112px)', fontWeight: 800, letterSpacing: '-0.04em', fontFamily: "'Plus Jakarta Sans', system-ui, sans-serif", animationDelay: '0.11s' }}>without</p>
+                </div>
+                <div className="overflow-hidden">
+                  <p className="animate-slide-up text-white leading-[0.88]" style={{ fontSize: 'clamp(52px, 8vw, 112px)', fontWeight: 800, letterSpacing: '-0.04em', fontFamily: "'Plus Jakarta Sans', system-ui, sans-serif", animationDelay: '0.18s' }}>the algo.</p>
                 </div>
               </div>
             </div>
 
-            {/* Action buttons + counter */}
-            <div className="flex items-center gap-3">
-              <button
-                onClick={() => handleSwipe('left')}
-                className="w-12 h-12 rounded-full bg-white/10 border border-white/20 flex items-center justify-center hover:bg-white/20 transition-colors"
-              >
-                <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-                  <path d="M2 2L12 12M12 2L2 12" stroke="white" strokeWidth="2" strokeLinecap="round" />
-                </svg>
-              </button>
-
-              <div className="glass-dark rounded-2xl px-4 py-2 text-center min-w-[80px]">
-                <p className="text-blue-400 text-[9px] font-semibold uppercase tracking-wider">Today</p>
-                <p className="text-white text-lg font-bold leading-none tracking-tight mt-0.5">
-                  {remaining}<span className="text-blue-400 text-[10px] font-normal">/100</span>
-                </p>
+            {/* BOTTOM: description + CTA + stats */}
+            <div className="mt-8 md:mt-0">
+              <p className="text-blue-300/70 text-[15px] leading-relaxed mb-7 max-w-sm animate-fade-in" style={{ animationDelay: '0.32s' }}>
+                100 real people every day. No like limits. No manipulation. Just genuine connections.
+              </p>
+              <div className="flex flex-wrap items-center gap-4 mb-0 md:mb-8 animate-fade-in" style={{ animationDelay: '0.42s' }}>
+                <a href="#waitlist" onClick={scrollToWaitlist} className="inline-flex items-center gap-2 bg-white text-blue-900 font-bold text-sm px-7 py-3.5 rounded-full hover:bg-blue-50 transition-colors">
+                  Pre-order on App Store
+                  <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6H10M7 3L10 6L7 9" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" /></svg>
+                </a>
+                <span className="text-blue-500 text-xs font-medium">iPhone only · Free forever</span>
               </div>
-
-              <button
-                onClick={() => handleSwipe('right')}
-                className="w-12 h-12 rounded-full bg-white flex items-center justify-center hover:bg-blue-50 transition-colors"
-              >
-                <svg width="14" height="13" viewBox="0 0 14 13" fill="none">
-                  <path d="M7 11.5C7 11.5 1 8 1 4.3C1 2.6 2.6 1 4.3 1C5.5 1 6.5 1.7 7 2.8C7.5 1.7 8.5 1 9.7 1C11.4 1 13 2.6 13 4.3C13 8 7 11.5 7 11.5Z" fill="#1e3a8a" />
-                </svg>
-              </button>
+              <div className="hidden md:flex items-center gap-10 pt-7 border-t border-white/[0.08]">
+                {[{ num: '∞', label: 'Free likes' }, { num: '100', label: 'Daily profiles' }, { num: '0', label: 'Algorithms' }].map(({ num, label }) => (
+                  <div key={label}>
+                    <p className="text-white font-extrabold italic leading-none" style={{ fontSize: 28, fontFamily: "'Plus Jakarta Sans', system-ui, sans-serif" }}>{num}</p>
+                    <p className="text-blue-500 text-[10px] font-semibold uppercase tracking-widest mt-1">{label}</p>
+                  </div>
+                ))}
+              </div>
             </div>
 
           </div>
+
+          {/* ── Right: Tall card filling column height — desktop only ── */}
+          <div className="hidden md:flex flex-col items-center py-10 px-8 gap-5">
+            <div className="relative" style={{ width: 'clamp(240px, 22vw, 320px)', aspectRatio: '9/16' }}>
+              <div className="absolute rounded-[28px] overflow-hidden" style={{ inset: 0, transform: 'rotate(5deg) translateY(6px)', opacity: 0.25, zIndex: 1 }}>
+                <img src={profiles[(swipe.idx + 2) % profiles.length].img} alt="" className="w-full h-full object-cover" />
+              </div>
+              <div className="absolute rounded-[28px] overflow-hidden" style={{ inset: 0, transform: 'rotate(-4deg) translateY(3px)', opacity: 0.55, zIndex: 2 }}>
+                <img src={profiles[(swipe.idx + 1) % profiles.length].img} alt="" className="w-full h-full object-cover" />
+              </div>
+              <div
+                key={swipe.idx}
+                className={`absolute rounded-[28px] overflow-hidden ${swipe.dir === 'left' ? 'animate-swipe-left' : swipe.dir === 'right' ? 'animate-swipe-right' : ''}`}
+                style={{ inset: 0, zIndex: 3 }}
+              >
+                <img src={profiles[swipe.idx].img} alt="" className="w-full h-full object-cover" />
+                <div className="absolute bottom-0 left-0 right-0 pt-20 pb-5 px-5" style={{ background: 'linear-gradient(to top, rgba(5,14,46,0.95) 0%, rgba(5,14,46,0.4) 60%, transparent 100%)' }}>
+                  <p className="text-white font-bold text-base leading-tight">{profiles[swipe.idx].name}, {profiles[swipe.idx].age}</p>
+                  <p className="text-blue-200/60 text-[12px] mt-1">{profiles[swipe.idx].dist}</p>
+                </div>
+              </div>
+            </div>
+            <div className="flex items-center gap-3 shrink-0">
+              <button onClick={() => handleSwipe('left')} className="w-12 h-12 rounded-full bg-white/10 border border-white/20 flex items-center justify-center hover:bg-white/20 transition-colors">
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 2L12 12M12 2L2 12" stroke="white" strokeWidth="2" strokeLinecap="round" /></svg>
+              </button>
+              <div className="backdrop-blur-xl bg-white/[0.07] border border-white/[0.12] rounded-2xl px-4 py-2 text-center min-w-[80px]">
+                <p className="text-blue-400 text-[9px] font-semibold uppercase tracking-wider">Today</p>
+                <p className="text-white text-lg font-bold leading-none tracking-tight mt-0.5">{remaining}<span className="text-blue-400 text-[10px] font-normal">/100</span></p>
+              </div>
+              <button onClick={() => handleSwipe('right')} className="w-12 h-12 rounded-full bg-white flex items-center justify-center hover:bg-blue-50 transition-colors">
+                <svg width="14" height="13" viewBox="0 0 14 13" fill="none"><path d="M7 11.5C7 11.5 1 8 1 4.3C1 2.6 2.6 1 4.3 1C5.5 1 6.5 1.7 7 2.8C7.5 1.7 8.5 1 9.7 1C11.4 1 13 2.6 13 4.3C13 8 7 11.5 7 11.5Z" fill="#1e3a8a" /></svg>
+              </button>
+            </div>
+          </div>
+
         </div>
 
         {/* Marquee */}
@@ -177,10 +130,7 @@ export default function Home() {
             {[0, 1].map((i) => (
               <span key={i} className="flex shrink-0">
                 {marqueeItems.map((item) => (
-                  <span
-                    key={item}
-                    className="inline-flex items-center text-[10px] font-semibold text-blue-400 uppercase tracking-[0.18em] px-5"
-                  >
+                  <span key={item} className="inline-flex items-center text-[10px] font-semibold text-blue-400 uppercase tracking-[0.18em] px-5">
                     {item}
                     <span className="ml-5 text-blue-700">·</span>
                   </span>
@@ -198,7 +148,6 @@ export default function Home() {
       <section className="md:hidden border-t border-white/10 py-12">
         <div className="flex flex-col items-center gap-4 px-5">
           <span className="text-[10px] font-semibold text-blue-400 uppercase tracking-widest mb-2">Try it out</span>
-
           <div className="relative" style={{ width: 220, height: 320 }}>
             <div className="absolute rounded-[28px] overflow-hidden" style={{ inset: 0, transform: 'rotate(6deg) translateY(8px)', opacity: 0.28, zIndex: 1 }}>
               <img src={profiles[(swipe.idx + 2) % profiles.length].img} alt="" className="w-full h-full object-cover" />
@@ -218,12 +167,11 @@ export default function Home() {
               </div>
             </div>
           </div>
-
           <div className="flex items-center gap-3">
             <button onClick={() => handleSwipe('left')} className="w-12 h-12 rounded-full bg-white/10 border border-white/20 flex items-center justify-center hover:bg-white/20 transition-colors">
               <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 2L12 12M12 2L2 12" stroke="white" strokeWidth="2" strokeLinecap="round" /></svg>
             </button>
-            <div className="glass-dark rounded-2xl px-4 py-2 text-center min-w-[80px]">
+            <div className="backdrop-blur-xl bg-white/[0.07] border border-white/[0.12] rounded-2xl px-4 py-2 text-center min-w-[80px]">
               <p className="text-blue-400 text-[9px] font-semibold uppercase tracking-wider">Today</p>
               <p className="text-white text-lg font-bold leading-none tracking-tight mt-0.5">{remaining}<span className="text-blue-400 text-[10px] font-normal">/100</span></p>
             </div>

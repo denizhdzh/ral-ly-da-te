@@ -1,0 +1,42 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,700;1,800&display=swap');
+
+@font-face {
+  font-family: 'FatKat';
+  src: url('/fonts/Fat Kat.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* things tailwind can't do */
+@keyframes admin-spin {
+  to { transform: rotate(360deg); }
+}
+.admin-spinner {
+  width: 32px; height: 32px;
+  border: 3px solid rgba(255,255,255,0.1);
+  border-top-color: rgba(219,234,254,0.8);
+  border-radius: 50%;
+  animation: admin-spin 0.7s linear infinite;
+}
+.admin-spinner-sm {
+  display: inline-block; vertical-align: middle;
+  width: 13px; height: 13px;
+  border: 2px solid rgba(255,255,255,0.15);
+  border-top-color: #1e3a8a;
+  border-radius: 50%;
+  animation: admin-spin 0.7s linear infinite;
+}
+.admin-toggle-thumb {
+  position: absolute; top: 2px; left: 2px;
+  width: 14px; height: 14px;
+  background: rgba(255,255,255,0.45);
+  border-radius: 50%;
+  transition: transform 0.2s;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.3);
+}
+.admin-toggle-thumb.on { background: #fff; }
+@keyframes toastIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.toast-in { animation: toastIn 0.2s ease-out; }

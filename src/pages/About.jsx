@@ -51,7 +51,7 @@ export default function About() {
           </div>
 
           <div
-            className="inline-flex items-center gap-2 glass-dark rounded-full px-3.5 py-1.5 mb-10 w-fit"
+            className="inline-flex items-center gap-2 backdrop-blur-xl bg-white/[0.07] border border-white/[0.12] rounded-full px-3.5 py-1.5 mb-10 w-fit"
           >
             <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
             <span className="text-[11px] font-semibold text-blue-200 tracking-widest uppercase">Now on App Store</span>

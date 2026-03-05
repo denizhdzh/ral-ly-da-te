@@ -25,7 +25,7 @@ export default function Navbar() {
         {/* Floating pill */}
         <div
           className="rounded-full border border-white/10 px-5 sm:pr-2 sm:pl-5 py-3 sm:py-1 flex items-center justify-between gap-4"
-          style={{ backdropFilter: 'blur(24px)', WebkitBackdropFilter: 'blur(24px)', background: 'rgba(12, 28, 78, 0.80)' }}
+          style={{ backdropFilter: 'blur(24px)', WebkitBackdropFilter: 'blur(24px)'}}
         >
           {/* Logo */}
           <Link

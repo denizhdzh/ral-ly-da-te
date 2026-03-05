@@ -8,6 +8,7 @@ import About from './pages/About'
 import FAQ from './pages/FAQ'
 import Privacy from './pages/Privacy'
 import Terms from './pages/Terms'
+import AdminApp from './AdminApp'
 
 function ScrollToTop() {
   const { pathname } = useLocation()
@@ -39,7 +40,10 @@ function Layout() {
 export default function App() {
   return (
     <HashRouter>
-      <Layout />
+      <Routes>
+        <Route path="/admin/*" element={<AdminApp />} />
+        <Route path="/*" element={<Layout />} />
+      </Routes>
     </HashRouter>
   )
 }
